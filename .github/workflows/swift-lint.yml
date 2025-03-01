@@ -1,0 +1,25 @@
+name: SwiftLint
+
+on:
+  push:
+    branches:
+      - "**"
+#      - main
+#      - develop
+#      - "release/*"
+#      - "hotfix/*"
+#  pull_request:
+#    branches:
+#      - main
+#      - develop
+
+jobs:
+  swiftlint:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: swift-lint
+      run: |
+        CURRENT_DIR=$(pwd)
+        CONFIG_FILE=$(find "$CURRENT_DIR" -type f -name ".swift-format" | head -1)
+        swift format lint -s --configuration "$CONFIG_FILE" -r .

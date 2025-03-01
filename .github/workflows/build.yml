@@ -1,0 +1,49 @@
+name: Swift
+
+on:
+  push:
+    branches:
+      - "**"
+#      - main
+#      - develop
+#      - "release/*"
+#      - "hotfix/*"
+#  pull_request:
+#    branches:
+#      - main
+#      - develop
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_16.2.app
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build iOS
+      run: xcodebuild -scheme SyncedScrollView -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build macOS
+      run: xcodebuild -scheme SyncedScrollView -destination "platform=macOS,OS=latest"
+
+  build-tvos:
+    name: Build tvOS
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build tvOS
+        run: xcodebuild -scheme SyncedScrollView -destination "platform=tvOS Simulator,name=Apple TV 4K (3rd generation),OS=latest"
+
+  build-visionos:
+    name: Build visionOS
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build visionOS
+        run: xcodebuild -scheme SyncedScrollView -destination "platform=visionOS Simulator,name=Apple Vision Pro,OS=latest"
+
