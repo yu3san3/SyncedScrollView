@@ -14,18 +14,18 @@ on:
 #      - develop
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_16.2.app
+  DEVELOPER_DIR: /Applications/Xcode_15.4.app
 
 jobs:
   build-ios:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
     - name: Build iOS
-      run: xcodebuild -scheme SyncedScrollView -destination "platform=iOS Simulator,name=iPhone 16 Pro,OS=latest"
+      run: xcodebuild -scheme SyncedScrollView -destination "platform=iOS Simulator,name=iPhone 15 Pro,OS=latest"
 
   build-macos:
-    runs-on: macos-latest
+    runs-on: macos-14
     steps:
     - uses: actions/checkout@v4
     - name: Build macOS
@@ -33,7 +33,7 @@ jobs:
 
   build-tvos:
     name: Build tvOS
-    runs-on: macOS-latest
+    runs-on: macOS-14
     steps:
       - uses: actions/checkout@v4
       - name: Build tvOS
@@ -41,7 +41,7 @@ jobs:
 
   build-visionos:
     name: Build visionOS
-    runs-on: macOS-latest
+    runs-on: macOS-14
     steps:
       - uses: actions/checkout@v4
       - name: Build visionOS
