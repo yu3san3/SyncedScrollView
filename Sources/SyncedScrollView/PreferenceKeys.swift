@@ -1,4 +1,4 @@
-import SwiftUICore
+import SwiftUI
 
 struct VSyncedContentSizeKey: PreferenceKey {
     static var defaultValue: CGSize = .zero
